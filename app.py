@@ -275,7 +275,7 @@ async def ask_ai(text, lang, user_name=None):
         name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
 
 
-    system_prompt = f"""
+system_prompt = f"""
 Sen NOVA nomli Telegram AI yordamchisan.
 
 Qoidalar:
