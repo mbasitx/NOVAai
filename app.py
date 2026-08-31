@@ -261,7 +261,6 @@ async def notify_owner(user_name, user_id, text):
     except Exception as e:
         print("Notify owner error:", e)
         return False
-
 async def ask_ai(text, lang, user_name=None):
     if lang == "ru":
         lang_instruction = "Отвечай только на русском языке."
@@ -274,6 +273,7 @@ async def ask_ai(text, lang, user_name=None):
         name_instruction = f"Foydalanuvchining ismi: {user_name}. Kerak bo'lsa ismi bilan murojaat qil."
     else:
         name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
+
 
     system_prompt = f"""
 Sen NOVA nomli Telegram AI yordamchisan.
