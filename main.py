@@ -1,7 +1,8 @@
 import os
-from pyrogram import Client, filters
-from openai import OpenAI
-
+import httpx
+import uvicorn
+from fastapi import FastAPI, Request, HTTPException
+from openai import AsyncOpenAI
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
