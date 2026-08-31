@@ -301,7 +301,7 @@ response = await ai.chat.completions.create(
 
 answer = response.choices[0].message.content
 
-    if not answer:
+if not answer:
         if lang == "ru":
             return "Извините, сейчас не смог ответить."
         if lang == "en":
