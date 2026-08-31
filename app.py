@@ -295,7 +295,14 @@ Qoidalar:
         temperature=0.7
     )
 
-answer = response.choices[0].message.content
+name_instruction = f"Foydalanuvchining ismi: {user_name}." if user_name else ""
+
+response = await ai.chat.completions.create(
+    model=MODEL,
+    messages=[
+        {"role": "system", "content": f"Sen NOVA Telegram yordamchisan. {name_instruction} Qisqa javob ber."},
+        {"role": "user", "content": text}
+    ]answer = response.choices[0].message.content
 
 if not answer:
         if lang == "ru":
