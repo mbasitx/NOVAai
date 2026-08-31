@@ -308,8 +308,7 @@ if not answer:
             return "Sorry, I couldn’t answer right now."
         return "Kechirasiz, hozir javob bera olmadim."
 
-    return answer
-
+return answer
 
 
 @app.on_event("startup")
