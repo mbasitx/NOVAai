@@ -286,7 +286,7 @@ Qoidalar:
 - Agar foydalanuvchi tilni o'zgartirishni so'rasa, keyingi javoblarda o'sha tilda davom et.
 - Agar foydalanuvchi xabar qoldirmoqchi bo'lsa, xabari egasiga yetkazilishini ayt.
 - Keraksiz uzun javob yozma.
-- Suhbat boshida ism so'ralgan bo'lsa, yana qayta so'rama.
+- Suhbat boshida ism so'ralgan bo'lsa, yana qayta so'rama."""
 {name_instruction}
 response = await ai.chat.completions.create(
         model=MODEL,
