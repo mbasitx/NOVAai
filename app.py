@@ -274,7 +274,6 @@ async def ask_ai(text, lang, user_name=None):
     else:
         name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
 
-
 system_prompt = f"""
 Sen NOVA nomli Telegram AI yordamchisan.
 
@@ -304,6 +303,7 @@ if not answer:
         if lang == "en":
             return "Sorry, I couldn’t answer right now."
         return "Kechirasiz, hozir javob bera olmadim."
+
 
 return answer
 
