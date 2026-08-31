@@ -262,7 +262,6 @@ async def notify_owner(user_name, user_id, text):
         print("Notify owner error:", e)
         return False
 
-
 async def ask_ai(text, lang, user_name=None):
     if lang == "ru":
         lang_instruction = "Отвечай только на русском языке."
@@ -310,6 +309,7 @@ response = await ai.chat.completions.create(
         return "Kechirasiz, hozir javob bera olmadim."
 
     return answer
+
 
 
 @app.on_event("startup")
