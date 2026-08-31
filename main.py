@@ -91,19 +91,22 @@ async def notify_owner(user_name, user_id, text):
 💬 Xabari:
 {text}
 """
-user = msg.get("from", {})
-user_id = user.get("id", "unknown")
-user_name = user.get("first_name", "Noma'lum")
 
-if user.get("username"):
-    user_name += f" (@{user.get('username')})"
 
 if need_forward(text):
     await notify_owner(user_name, user_id, text)
-
+user = msg.get("from", {})
+user_id = user.get("id", "unknown")
+user_name = user.get("first_name", "Noma'lum")
+    # Agar Business chatda xabarni o'zingiz yozgan bo'lsangiz, bot javob bermaydi
+    if source == "Business chat" and OWNER_ID and str(user_id) == str(OWNER_ID):
+        print("Owner message ignored")
+        return
+if user.get("username"):
+    user_name += f" (@{user.get('username')})"
 answer = await ask_ai(text)
 await send_msg(chat_id, answer, business_id)
-    await send_msg(int(OWNER_ID), msg)
+    await send_message(int(OWNER_ID), message)
 @app.on_event("startup")
 async def startup():
     webhook = f"{WEBHOOK_URL}/webhook"
