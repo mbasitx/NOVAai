@@ -288,8 +288,7 @@ Qoidalar:
 - Keraksiz uzun javob yozma.
 - Suhbat boshida ism so'ralgan bo'lsa, yana qayta so'rama.
 {name_instruction}
-"""    
-        response = await ai.chat.completions.create(
+response = await ai.chat.completions.create(
         model=MODEL,
         messages=[
             {"role": "system", "content": system_prompt},
