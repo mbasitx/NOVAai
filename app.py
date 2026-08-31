@@ -299,7 +299,7 @@ response = await ai.chat.completions.create(
         temperature=0.7
     )
 
-    answer = response.choices[0].message.content
+answer = response.choices[0].message.content
 
     if not answer:
         if lang == "ru":
