@@ -43,7 +43,7 @@ async def send_msg(chat_id, text, business_id=None):
 
     async with httpx.AsyncClient(timeout=30) as client:
         res = await client.post(f"{TG_API}/sendMessage", json=data)
-        print(res.text)
+        print("Telegram:", res.text)
 
 @app.on_event("startup")
 async def startup():
@@ -54,10 +54,16 @@ async def startup():
             f"{TG_API}/setWebhook",
             json={
                 "url": webhook,
-                "allowed_updates": ["message", "business_message", "business_connection"]
+                "allowed_updates": [
+                    "message",
+                    "business_message",
+                    "business_connection"
+                ]
             }
         )
-        print("Webhook:", r.text)
+
+    print("Webhook set:", webhook)
+    print("Telegram response:", r.text)
 
 @app.get("/")
 async def home():
@@ -66,7 +72,7 @@ async def home():
 @app.post("/webhook")
 async def webhook(request: Request):
     update = await request.json()
-    print(update)
+    print("UPDATE:", update)
 
     try:
         if "business_message" in update:
@@ -92,7 +98,7 @@ async def webhook(request: Request):
             text = msg["text"]
 
             if text == "/start":
-                await send_msg(chat_id, "Salom! Men NOVA man xabar yozib qoldiring:")
+                await send_msg(chat_id, "Salom! Men NOVA xabar yozing:")
             else:
                 answer = await ask_ai(text)
                 await send_msg(chat_id, answer)
