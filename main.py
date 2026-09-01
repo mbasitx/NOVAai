@@ -310,7 +310,7 @@ return answer
 async def startup():
     webhook = f"{WEBHOOK_URL.rstrip('/')}/webhook"
 
-    async with httpx.AsyncClient(timeout=30) as client:
+async with httpx.AsyncClient(timeout=30) as client:
         r = await client.post(
             f"{TG_API}/setWebhook",
             json={
@@ -334,7 +334,7 @@ async def home():
 
 async def handle_message(msg, business_id=None, source="Bot chat"):
     if "text" not in msg:
-        return
+    return
 
     chat_id = msg["chat"]["id"]
     text = msg["text"].strip()
