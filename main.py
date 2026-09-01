@@ -322,9 +322,8 @@ async with httpx.AsyncClient(timeout=30) as client:
                 ]
             }
         )
-
-    print("Webhook set:", webhook)
-    print("Telegram response:", r.text)
+        print("Webhook set:", webhook)
+        print("Telegram response:", r.text)
 
 
 @app.get("/")
