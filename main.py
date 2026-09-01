@@ -273,8 +273,7 @@ async def ask_ai(text, lang, user_name=None):
         name_instruction = f"Foydalanuvchining ismi: {user_name}. Kerak bo'lsa ismi bilan murojaat qil."
     else:
         name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
-
-system_prompt = f"""
+            system_prompt = f"""
 Sen NOVA nomli Telegram AI yordamchisan.
 
 Qoidalar:
@@ -286,7 +285,7 @@ Qoidalar:
 - Agar foydalanuvchi xabar qoldirmoqchi bo'lsa, xabari egasiga yetkazilishini ayt.
 - Keraksiz uzun javob yozma.
 - Suhbat boshida ism so'ralgan bo'lsa, yana qayta so'rama."""
-{name_instruction} response = await ai.chat.completions.create(
+   response = await ai.chat.completions.create(    
         model=MODEL,
         messages=[
             {"role": "system", "content": system_prompt},
@@ -297,22 +296,15 @@ Qoidalar:
 
 name_instruction = f"Foydalanuvchining ismi: {user_name}." if user_name else ""
 
-response = await ai.chat.completions.create(
-    model=MODEL,
-    messages=[
-        {"role": "system", "content": f"Sen NOVA Telegram yordamchisan. {name_instruction} Qisqa javob ber."},
-        {"role": "user", "content": text}
     ]answer = response.choices[0].message.content
 
-if not answer:
+        if not answer:
         if lang == "ru":
             return "Извините, сейчас не смог ответить."
         if lang == "en":
             return "Sorry, I couldn’t answer right now."
         return "Kechirasiz, hozir javob bera olmadim."
-
-
-return answer
+        return answer
 
 
 @app.on_event("startup")
