@@ -295,8 +295,7 @@ Qoidalar:
     )
 
 name_instruction = f"Foydalanuvchining ismi: {user_name}." if user_name else ""
-
-    ]answer = response.choices[0].message.content
+    answer = response.choices[0].message.content
 
         if not answer:
         if lang == "ru":
