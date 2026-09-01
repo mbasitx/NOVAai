@@ -295,7 +295,7 @@ Qoidalar:
     )
 
 name_instruction = f"Foydalanuvchining ismi: {user_name}." if user_name else ""
-    answer = response.choices[0].message.content
+answer = response.choices[0].message.content
 
         if not answer:
         if lang == "ru":
@@ -379,7 +379,7 @@ async def handle_message(msg, business_id=None, source="Bot chat"):
         return
 
     # Birinchi haqiqiy xabardan tilni aniqlaydi.
-    if not state["language"]:
+    if not state.get("language"):
         state["language"] = detect_language(text)
 
     lang = state["language"]
@@ -392,7 +392,7 @@ async def handle_message(msg, business_id=None, source="Bot chat"):
     display_name = state["name"] or tg_name
 
     # Birinchi haqiqiy xabarda o'sha tilda tanishtiradi va ism so'raydi.
-    if not state["introduced"]:
+    if not state.get("introduced"):
         state["introduced"] = True
         state["asked_name"] = True
 
@@ -412,9 +412,9 @@ async def handle_message(msg, business_id=None, source="Bot chat"):
             await send_msg(chat_id, intro + "\n\n" + reply, business_id)
             return
 
-        answer = await ask_ai(text, lang, state["name"])
-        await send_msg(chat_id, intro + "\n\n" + answer, business_id)
-        return
+    answer = await ask_ai(text, lang, state["name"])
+    await send_msg(chat_id, intro + "\n\n" + answer, business_id)
+    return
 
     # Agar xabar yetkazib qo'y desa, egasiga yuboradi.
     if wants_to_leave_message(text):
