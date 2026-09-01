@@ -272,7 +272,7 @@ async def ask_ai(text, lang, user_name=None):
     if user_name:
         name_instruction = f"Foydalanuvchining ismi: {user_name}. Kerak bo'lsa ismi bilan murojaat qil."
     else:
-    name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
+        name_instruction = "Foydalanuvchining ismi noma'lum. Ismini qayta-qayta so'rama."
     system_prompt = f"""
 Sen NOVA nomli Telegram AI yordamchisan.
 
