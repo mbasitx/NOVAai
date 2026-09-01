@@ -297,13 +297,13 @@ Qoidalar:
 name_instruction = f"Foydalanuvchining ismi: {user_name}." if user_name else ""
 answer = response.choices[0].message.content
 
-        if not answer:
+if not answer:
         if lang == "ru":
             return "Извините, сейчас не смог ответить."
         if lang == "en":
             return "Sorry, I couldn’t answer right now."
         return "Kechirasiz, hozir javob bera olmadim."
-        return answer
+return answer
 
 
 @app.on_event("startup")
